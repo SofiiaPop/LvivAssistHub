@@ -1,0 +1,22 @@
+body {
+    background-image: url("background5.png");
+  }
+  
+  h1 {
+    color: #f4f4f4;
+    margin-top: 200px;
+    font-size: 140px;
+    margin-left: 100px;
+  }
+
+  .button {
+    font-size: 20px;
+    display: inline-block;
+    padding: 40px 160px;
+    color: #fff;
+    background-color: #ffffff00;
+    border-color: #f4f4f4;
+    border: 2px solid rgb(244, 244, 244);
+    border-radius: 40px;
+    margin: 5px;
+  }
