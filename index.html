@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1>Choose hashtag for search</h1>
+
+<form action="/get_companies" method="GET" id="companiesForm">
+    <input type="hidden" id="hashtagInput" name="hashtag">
+    <button type="button" value="VentilationCleaners" class="button" style="top: 275px; left: 125px;">Ventilation</button>
+    <button type="button" value="PlumbingTechnicians" class="button" style="top: 275px; left: 634px;">Plumb</button>
+    <button type="button" value="FurnitureRepair" class="button" style="top: 275px; left: 1134px;">Furniture</button>
+    <button type="button" value="SecuritySystem" class="button" style="top: 425px; left: 831px;">Security system</button>
+    <button type="button" value="Electricians" class="button" style="top: 425px; left: 373px;">Electricians</button>
+    <button type="button" value="WindowDoorReplacement" class="button" style="top: 575px; left: 125px;">Window and door</button>
+    <button type="button" value="Landscape" class="button" style="top: 575px; left: 640px;">Landscape</button>
+    <button type="button" value="HeatingSystem" class="button" style="top: 575px; left: 1134px;">Heating system</button>
+    <button type="button" value="Cleaning" class="button" style="top: 725px; left: 348px;">Cleaning</button>
+    <button type="button" value="RoofRepair" class="button" style="top: 725px; left: 856px;">Roof repair</button>
+    <div class="dropdown">
+      <p>Try to find other hashtags</p>
+      <input id="dropInput" class='dropbtn' list="dropdown-options">
+      <datalist id="dropdown-options">
+        {% for hashtag in hashtags %}
+          <option value="{{ hashtag }}"></option>
+        {% endfor %}
+      </datalist>
+    </div>
+</form>
+{{ alert_script | safe }}
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('#dropInput').on('change', function() {
+      var inputValue = $(this).val();
+      $("#hashtagInput").val(inputValue);
+      $("#companiesForm").submit();
+    });
+
+    $(".button").click(function(){
+      var hashtagValue = $(this).val();
+      $("#hashtagInput").val(hashtagValue);
+      $("#companiesForm").submit();
+    });
+  });
+</script>
+
+</body>
+</html>
