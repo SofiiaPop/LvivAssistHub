@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='employees.css') }}">
+</head>
+<body>
+<h1>Employee Information</h1>
+<div class="container">
+  <div class="row">
+    {% for employee in employees %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body gray-bg">
+          <h5 class="card-title">{{ employee.name }} {{ employee.surname }}</h5>
+          <h6>{{ employee.email }}</h6>
+          <p>{{ employee.description[:200] + '...' if employee.description|length > 200 else employee.description }}</p>
+          <p>{{ employee.price[:200] + '...' if employee.price|length > 200 else employee.price }}</p>
+          <a href="{{ url_for('profile', email=employee.email, description=employee.description, comment=None) }}" class="button_to_url">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>
