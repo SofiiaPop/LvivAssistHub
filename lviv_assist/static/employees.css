@@ -1,0 +1,31 @@
+body {
+    background-image: url("registration.png");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: darkgray;
+  }
+  
+  h1 {
+    font-size: 70px;
+    color: #f3efef;
+    text-align: center;
+    margin-top: 200px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .gray-bg {
+    background-color: #f8f9fa;
+  }
+  
+  .button_to_url {
+    background-color: rgba(216, 211, 211, 0.578);
+    color: rgb(246, 243, 243);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+  }
+  

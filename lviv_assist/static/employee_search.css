@@ -1,0 +1,31 @@
+body {
+    background-image: url("registration.png");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: darkgray;
+  }
+  
+  h1 {
+    font-size: 70px;
+    color: #f3efef;
+    text-align: center;
+    margin-top: 200px;
+  }
+
+  .button_to_url {
+    background-color: rgba(216, 211, 211, 0.578);
+    border-color: rgb(246, 243, 243);
+    border-radius: 10px !important;
+  }
+
+  .gray-bg {
+    background-color: rgba(170, 166, 166, 0.297);
+  } 
+
+.button_to_url:hover {
+  background-color: #ffffff;
+}
+.button_to_url:active {
+  background-color: #ffffff;
+}

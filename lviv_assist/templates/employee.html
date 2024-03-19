@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LvivAssistHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='employee.css') }}">
+</head>
+<body>
+    <h1>Employee page</h1>
+
+    <a href="{{ url_for('register') }}">
+        <button class="button" style="position: absolute; top: 425px; left: 70px;">Sign Up</button>
+    </a>
+
+    <a href="{{ url_for('login') }}">
+        <button class="button" style="position: absolute; top: 587px; left: 70px;">Log In</button>
+    </a>
+</body>
+</html>

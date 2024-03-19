@@ -1,0 +1,87 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("registration.png");
+    background-size: all;
+    background-repeat: no-repeat;
+    margin-top: 5rem;
+  }
+
+  .custom-section-class{
+    background-attachment:fixed;
+    background-size:cover;
+  }
+
+  .background-container {
+    background-image: url("tiles.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Set a fixed height for the background container */
+    overflow-y: hidden; /* Enable vertical scrolling for the background container */
+    position: fixed;
+    width: 100%; /* Take the full width of the viewport */
+    z-index: -1; /* Send the background container to the back */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+  }
+  
+  .bg-steel {
+    background-color: #f1f1f1ab;
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: hsl(0, 0%, 24%);
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 100;
+  }
+  /* registration-style.css */
+
+    .container {
+        max-width: 800px; /* Adjust the max-width as needed to make the frame wider */
+        margin: 10px; /* Adjust the margin for the top and bottom, and set auto for left and right */
+        padding: 20px;
+    }
+
+    .content-section {
+        background: #f4f1f159;
+        color: #ffffff;
+        padding: 20px;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        z-index: 0;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn-register {
+        background-color: #6d8183; /* Bootstrap's primary color */
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .btn-register:hover {
+        background-color: #5f5e5e; /* Darker shade on hover */
+    }
+
+    .btn-outline-info {
+        background-color: white; /* Specify your desired color code */
+        color: #ffffff;
+    }
+
+    input[type=radio], input[type=checkbox]{
+        transform: scale(2);
+        margin-right: 2em
+    }
