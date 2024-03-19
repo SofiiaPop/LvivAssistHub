@@ -4,17 +4,285 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LvivAssistHub</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+    .title {
+        font-size: 120px;
+        color: white;
+        font-weight: normal;
+        position: absolute;
+        left: 26%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Arial, sans-serif;
+    }
+
+    .section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 105vh;
+        overflow-y: scroll;
+
+    }
+
+    .section:nth-child(even) {
+        background-color: #B6A29E;
+    }
+
+    p {
+        font-family: Arial, sans-serif;
+        font-size: 80px;
+        color: white;
+        font-weight: normal;
+        padding-top: 60px;
+        padding-left: 40px;
+        margin: 0;
+    }
+    .quarter-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background-color: rgba(255, 255, 255, 0.5);
+        height: 25vh;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+        padding: 20px;
+    }
+
+    .button {
+        position: fixed;
+        top: 680px;
+        left: 70px;
+    }
+    *, *:before, *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            minFontSize + (maxFontSize - minFontSize) * (100vw - minVWidth)/(maxVWidth - minVWidth)
+            font-size: calc(64px + (80 - 64) * (100vw - 320px)/(960 - 320));
+        }
+        body, input {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        input {
+            display: block;
+            margin-bottom: 1.5em;
+        }
+        main {
+            padding: 1.5em 0 0 0;
+            text-align: center;    
+        }
+        .l {
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 0.75em;
+            box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.3) inset;
+            color: #fdea7b;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.15em;
+            width: 3em;
+            height: 1.5em;
+            transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
+            appearance: none;
+        }
+        .l:before, .l:after {
+            content: "";
+            display: block;
+        }
+        .l:before {
+            background-color: #d7d7d7;
+            border-radius: 50%;
+            width: 1.2em;
+            height: 1.2em;
+            transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+            z-index: 1;
+        }
+        .l:after {
+            background:
+                linear-gradient(transparent 50%, rgba(0,0,0,0.15) 0) 0 50% / 50% 100%,
+                repeating-linear-gradient(90deg,#bbb 0,#bbb,#bbb 20%,#999 20%,#999 40%) 0 50% / 50% 100%,
+                radial-gradient(circle at 50% 50%,#888 25%, transparent 26%);
+            background-repeat: no-repeat;
+            border: 0.25em solid transparent;
+            border-left: 0.4em solid #d8d8d8;
+            border-right: 0 solid transparent;
+            transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+            transform: translateX(-22.5%);
+            transform-origin: 25% 50%;
+            width: 1.2em;
+            height: 1em;
+        }
+        .l:checked {
+            background-color: rgba(0,0,0,0.45);
+            box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.1) inset;
+        }
+        .l:checked:before {
+            background-color: currentColor;
+            transform: translateX(125%)
+        }
+        .l:checked:after {
+            border-left-color: currentColor;
+            transform: translateX(-2.5%) rotateY(180deg);
+        }
+        .l:focus {
+            outline: 0;
+        }
+        .light-bulb {
+            width: 0px;
+            height: 0px;
+            background-color: yellow;
+            border-radius: 50%;
+            margin: 40px auto 0;
+            transition: background-color 0.3s ease;
+        }
+        .light-on .light-bulb {
+            background-color: #ffeb3b;
+        }
+    </style>
+
 </head>
 <body>
-    <h1>LvivAssistHub</h1>
+    <input class="l" type="checkbox" id="light-toggle">
+    <label for="light-toggle"></label>
+    <div class="light-bulb"></div>
+    <div>
+    <div class="section">
+        <div class="title">LvivAssistHub</div>
+        <div class="overlay"></div>
+        <a class="button4" style="font-size: 25px;">LvivAssistHub</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('account') }}" class="logout-button" style="right: 120px;padding: 10px 20px;">Account</a>
+        <a href="{{ url_for('logout') }}" class="logout-button" style="right: 15px; padding: 10px 20px;">Log out</a>
+        {% else %}
+            <a href="{{ url_for('register') }}" class="logout-button" style="right: 120px;padding: 10px 20px;">Sign Up</a>
+            <a href="{{ url_for('login') }}" class="logout-button" style="right: 15px; padding: 10px 20px;">Log In</a>
+        {% endif %}
+        <a href="{{ url_for('employee_search') }}" class="logout-button1">Search</a>
+            <a href="{{ url_for('employee_search') }}">
+                <button class="button">Search for service</button>
+            </a>
+        </div>
+    </div>
 
-    <a href="{{ url_for('search') }}">
-        <button class="button" style="position: absolute; top: 425px; left: 70px;">I'm a user</button>
-    </a>
+    <div class="section" style="background-color: #A09393; width: 100vw; display: flex; flex-direction: column; justify-content: flex-end; position: relative;">        
+        <div style="flex: 1;"></div>
+        <img src="/static/lviv1.JPG"  style="width: 700px; height: 300px;top: 70px ;position: absolute; left: 70px;border: 2px solid white;border-radius: 10px">
+        <div style="position: absolute; top: 70px; left: 771px; width: 700px; height: 300px; background-color: rgba(255, 255, 255, 0.4); border-radius: 10px; border: 2px solid white;"></div>
+            <div style="padding: 80px; color: white; font-family: Arial, sans-serif; font-size: 25px; display: flex; flex-direction: column; width: 500px; text-align: right; justify-content: flex-start; margin-right: -600px;">
+                <span>Welcome to our service platform, where we help you find qualified workers for those in need of repairs, maintenance and other services. Our goal is to simplify the process of finding reliable workers and ensure that your service needs are met efficiently and professionally.</span>
+            </div>
+        <img src="/static/lviv2.JPG"  style="width: 700px; height: 300px;top: 400px ;position: absolute; right: 70px;border: 2px solid white;border-radius: 10px">
+        <div style="position: absolute; top: 400px; right: 771px; width: 700px; height: 300px; background-color: rgba(255, 255, 255, 0.4); border-radius: 10px; border: 2px solid white;"></div>
+            <div style="padding: 80px; color: white; font-family: Arial, sans-serif; font-size: 25px; display: flex; flex-direction: column; width: 500px; text-align: left; justify-content: flex-start; margin-left: -600px;">
+                <span>Whether you are looking for a plumber, electrician or any other service provider, we are here to help you find the right professional. Join us today and experience how easy it is to find quality services.</span>
+            </div>
+        <p style="font-size: 20px; margin: 0px;">Email: lvivassisthub@gmail.com</p>
+        <p style="font-size: 20px; margin: 0px;">+38(097) 298 67 59</p>
+        <p style="font-size: 20px; margin: 0px;">+38(063) 436 56 56</p>
+        <p style="font-size: 20px; margin: 0px;">Lviv, Kozelnytska 2 a</p>
 
-    <a href="{{ url_for('employee') }}">
-        <button class="button" style="position: absolute; top: 587px; left: 70px;">I'm a service provider</button>
-    </a>
+        <div class="quarter-bar"></div>
+    </div>
+
+    <section class="card-list" style="background-color: #A09393">
+        <article class="card">
+            <header class="card-header">
+                <img src="/static/ivan_volkov.jpg" class="author-avatar" alt="Ivan Volkov">
+                <div class="author-details">
+                    <h4>Ivan Volkov</h4>
+                    <h4>Plumber</h4>
+                    <h5>ivan_volkov@gmail.com</h5>
+                </div>
+            </header>
+            <div class="comment">
+                <h3>"LvivAssistHub is simply a treasure trove service! In the hustle and bustle of a big city, the eternal balancing act of 'how much is my time worth,' for me, Kabanchik is a lifesaver. 3 minutes to create an order, 1 phone call with a specialist, about an hour of his work, and everyone is happy!"</h3>
+            </div>
+        </article>
+
+        <article class="card">
+            <header class="card-header">
+                <img src="/static/petro_kovalenko.jpg" class="author-avatar" alt="Petro Kovalenko">
+                <div class="author-details">
+                    <h4>Petro Kovalenko</h4>
+                    <h4>Electrician</h4>
+                    <h5>petro_kovalenko@gmail.com</h5>
+                </div>
+            </header>
+            <div class="comment">
+                <h3>"A popular service that is convenient for both clients and professionals. The excellent selection of experts for people's everyday needs is complemented by a clear and informative interface, making 'Kabanchik' an excellent assistant. Problems are solved promptly and, most importantly, without wasting time and extra money."</h3>
+            </div>
+        </article>
+
+        <article class="card">
+            <header class="card-header">
+                <img src="/static/oksana_yarovaya.jpg" class="author-avatar" alt="Oksana Yarovaya">
+                <div class="author-details">
+                    <h4>Oksana Yarovaya</h4>
+                    <h4>Freelance Graphic Designer</h4>
+                    <h5>oksana_yarovaya@gmail.com</h5>
+                </div>
+            </header>
+            <div class="comment">
+                <h3>"LvivAssistHub has given me the opportunity to quickly find clients - I simply receive notifications of new orders. It has allowed me to earn more than I received working in the office. It has brought new clients - the most interesting entrepreneurs. By completing their tasks, I develop as a professional."
+            </div>
+        </article>
+        
+        <article class="card">
+            <header class="card-header">
+                <img src="/static/anna_shevchenko.jpg" class="author-avatar" alt="Anna Shevchenko">
+                <div class="author-details">
+                    <h4>Anna Shevchenko</h4>
+                    <h4>Plumber</h4>
+                    <h5>anna_shevchenko@gmail.com</h5>
+                </div>
+            </header>
+            <div class="comment">
+                <h3>"Very satisfied with the resource. Used it several times: looked for a wallpaper installer, a nanny for the child, and a seamstress. Satisfied. There was even no fear of sending a sewing order to another city, as thorough verification of specialists minimized risks."
+                </div>
+        </article>
+
+        <article class="card">
+            <header class="card-header">
+                <img src="/static/olena_kovalchuk.jpg" class="author-avatar" alt="Olena Kovalchuk">
+                <div class="author-details">
+                    <h4>Olena Kovalchuk</h4>
+                    <h4>Baker</h4>
+                    <h5>olena_kovalchuk@gmail.com</h5>
+                </div>
+            </header>
+            <div class="comment">
+                <h3>"LvivAssistHub is a reliable service where you can find quality and delicious products. I recommend it to everyone who appreciates tasty and fresh baked goods!"</h3>
+            </div>
+        </article>
+        </section>
+        <script>
+            const lightBulb = document.querySelector('.light-bulb');
+            const lightToggle = document.getElementById('light-toggle');
+            const body = document.body;
+            const logoutButton = document.querySelector('.logout-button');
+    
+            lightToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    lightBulb.classList.add('light-on');
+                    body.style.background = "url('/static/background5_dark.png')";
+                    logoutButton.style.color = 'rgb(115, 115, 117)';
+                    logoutButton.style.border = '2px solid white;'
+                } else {
+                    lightBulb.classList.remove('light-on');
+                    body.style.backgroundImage = "url('/static/background5.png')";
+                    logoutButton.style.color = 'rgb(156, 155, 159)';
+                    logoutButton.style.border = '2px solid rgd(195, 195, 195);'
+                }
+            });
+        </script>
 </body>
 </html>
