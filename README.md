@@ -2,7 +2,7 @@
 This app was developed with the goal of streamlining the process of finding skilled professionals who specialize in cleaning ventilation and plumbing systems and other services. By connecting users with qualified individuals or companies, it aims to make the task of maintaining and servicing these essential systems easier and more convenient. Whether you need routine maintenance or urgent repairs, this app provides a platform to find reliable professionals efficiently.
 # Homepage
 On this page user can sign up or log in by appropriate button in a top bar if he/she is not logged in.
-[(https://github.com/SofiiaPop/LvivAssistHub/commit/6e36fb176a4a0405d42ba334295609574c75d78d?diff=unified&w=0#diff-fd6c2bec946abb956999d3f1885d10de8eada4f6c1bd17c30dce49bb0162e5d3)]
+[(homepage.png)]
 If user is logged in he/she can view his/her profile or log out by aproppriate buttons in a top bar.
 Also user can choose the theme of app (which will be authaumatically provide it on other pages and user can change it on other pages with light bulb in the top left corner).
 Also user can send us a message by button with message icon.
